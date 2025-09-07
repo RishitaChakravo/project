@@ -2,11 +2,11 @@
 
 import axios from "axios";
 import { motion } from "motion/react";
+import Link from "next/link";
 import { useEffect, useState } from "react";
 
 export function TaskHero() {
     const [loggedIn, setLoggedIn] = useState(false)
-    const [loading, setLoading] = useState(true)
 
     useEffect(() => {
         const checkLoggedIn = async () => {
@@ -15,9 +15,7 @@ export function TaskHero() {
                 setLoggedIn(response.data.loggedIn)
             } catch (err) {
                 setLoggedIn(false)
-            } finally {
-                setLoading(false)
-            }
+            } 
         }
 
         checkLoggedIn()
@@ -53,12 +51,16 @@ export function TaskHero() {
                 transition={{ delay: 1.3 }}
                 className="mt-8 flex flex-wrap justify-center gap-4"
             >
-                <button className="px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition">
+                <Link href={`${loggedIn ? '/mydashboard' : '/auth/signup'}`}>
+                    <button className="px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition">
                     Create a Task
                 </button>
-                <button className="px-6 py-3 border border-gray-300 rounded-lg hover:bg-gray-100 dark:border-gray-700 dark:hover:bg-gray-800 dark:text-white transition">
+                </Link>
+                <Link href={`${loggedIn ? '/mydashboard' : '/auth/signup'}`}>
+                    <button className="px-6 py-3 border border-gray-300 rounded-lg hover:bg-gray-100 dark:border-gray-700 dark:hover:bg-gray-800 dark:text-white transition">
                     View Teams
                 </button>
+                </Link>
             </motion.div>
 
             <motion.div

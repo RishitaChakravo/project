@@ -6,7 +6,6 @@ import { useEffect, useState } from "react";
 
 export default function NavBar() {
   const [loggedIn, setLoggedIn] = useState(false)
-  const [loading, setLoading] = useState(true)
 
   useEffect(() => {
     const checkLoggedIn = async () => {
@@ -15,8 +14,6 @@ export default function NavBar() {
         setLoggedIn(response.data.loggedIn)
       } catch (error) {
         setLoggedIn(false)
-      } finally {
-        setLoading(false)
       }
     }
 
