@@ -13,6 +13,7 @@ export default function NavBar() {
         const response = await axios.get('/api/users/checkLoggedIn')
         setLoggedIn(response.data.loggedIn)
       } catch (error) {
+        console.error(error);
         setLoggedIn(false)
       }
     }

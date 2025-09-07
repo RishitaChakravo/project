@@ -49,6 +49,7 @@ export default function DashBoard() {
                 setLoggedIn(response.data.loggedIn)
                 setUser(response.data.user)
             } catch (error) {
+                console.error(error);
                 setLoggedIn(false)
             } finally {
                 setLoading(false)

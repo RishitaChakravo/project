@@ -13,7 +13,8 @@ export function TaskHero() {
             try {
                 const response = await axios.get('/api/users/checkLoggedIn')
                 setLoggedIn(response.data.loggedIn)
-            } catch (err) {
+            } catch (error) {
+                console.error(error);
                 setLoggedIn(false)
             } 
         }
