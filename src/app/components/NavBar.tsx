@@ -3,9 +3,11 @@
 import Link from "next/link";
 import axios from "axios";
 import { useEffect, useState } from "react";
+import { useRouter } from "next/navigation";
 
 export default function NavBar() {
   const [loggedIn, setLoggedIn] = useState(false)
+  const router = useRouter()
 
   useEffect(() => {
     const checkLoggedIn = async () => {
@@ -24,6 +26,7 @@ export default function NavBar() {
   const handleLogout = async () => {
     try {
       await axios.post('/api/users/logout')
+      router.refresh()
     } catch (error) {
       console.log(error)      
     }
