@@ -1,6 +1,5 @@
 'use client'
 
-import Link from "next/link";
 import NavBar from "./components/NavBar";
 import { TaskHero } from "./components/heroSec";
 
