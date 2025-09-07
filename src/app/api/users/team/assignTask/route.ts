@@ -35,9 +35,9 @@ export async function POST(request: NextRequest) {
             { status: 201 }
         );
 
-    } catch (error: any) {
+    } catch (error) {
         return NextResponse.json(
-            { message: "Error assigning task", error: error.message },
+            { message: "Error assigning task", error: error },
             { status: 500 }
         );
     }

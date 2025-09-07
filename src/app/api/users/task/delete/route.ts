@@ -42,7 +42,7 @@ export async function POST(request: NextRequest) {
             { message: "Task deleted successfully" }, 
             { status: 200 });
 
-    } catch (error: any) {
+    } catch (error) {
         console.error(error);
         return NextResponse.json(
             { error: "Server error" }, 

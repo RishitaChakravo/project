@@ -45,10 +45,10 @@ export async function GET(request: NextRequest) {
         ]);
 
         return NextResponse.json({ tasks });
-    } catch (error: any) {
+    } catch (error) {
         console.error(error);
         return NextResponse.json(
-            { error: "Something went wrong", message: error.message },
+            { error: "Something went wrong", message: error},
             { status: 500 }
         );
     }

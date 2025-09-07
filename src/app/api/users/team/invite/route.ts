@@ -36,9 +36,9 @@ export async function POST(request: NextRequest) {
             { message: "User invited and added to team", team },
             { status: 200 }
         );
-    } catch (error: any) {
+    } catch (error) {
         return NextResponse.json(
-            { message: "Error inviting user", error: error.message },
+            { message: "Error inviting user", error: error},
             { status: 500 }
         );
     }

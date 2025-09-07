@@ -60,11 +60,11 @@ export async function POST(request: NextRequest) {
             task
         }, { status: 200 });
 
-    } catch (error: any) {
+    } catch (error) {
         console.error(error);
         return NextResponse.json({
             error: "Server Error",
-            message: error.message || ""
+            message: error || ""
         }, { status: 500 });
     }
 }

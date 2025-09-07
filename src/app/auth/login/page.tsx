@@ -15,8 +15,8 @@ export default function Login() {
             })
 
             console.log("Login success:", response.data)
-        } catch (error: any) {
-            console.error("Login failed:", error.response?.data || error.message)
+        } catch (error) {
+            console.error("Login failed:", error)
         }
     }
 

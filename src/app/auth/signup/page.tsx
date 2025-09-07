@@ -19,8 +19,8 @@ export default function Signup() {
       });
 
       console.log("Signup success:", response.data);
-    } catch (error: any) {
-      console.error("Signup failed:", error.response?.data || error.message);
+    } catch (error) {
+      console.error("Signup failed:", error);
     }
   };
 
@@ -32,7 +32,7 @@ export default function Signup() {
         </h2>
 
         <div className="flex flex-col gap-6">
-          {/* Name */}
+          
           <div className="flex flex-col">
             <label className="text-sm mb-1 text-gray-200">Name</label>
             <input
@@ -44,7 +44,6 @@ export default function Signup() {
             />
           </div>
 
-          {/* Username */}
           <div className="flex flex-col">
             <label className="text-sm mb-1 text-gray-200">Username</label>
             <input
@@ -56,7 +55,6 @@ export default function Signup() {
             />
           </div>
 
-          {/* Email */}
           <div className="flex flex-col">
             <label className="text-sm mb-1 text-gray-200">Email</label>
             <input
@@ -68,7 +66,6 @@ export default function Signup() {
             />
           </div>
 
-          {/* Password */}
           <div className="flex flex-col">
             <label className="text-sm mb-1 text-gray-200">Password</label>
             <input
@@ -80,7 +77,6 @@ export default function Signup() {
             />
           </div>
 
-          {/* Button */}
           <button
             onClick={submit}
             className="mt-4 w-full py-3 rounded-xl bg-gradient-to-r from-indigo-500 to-purple-600 text-white text-lg font-semibold hover:from-indigo-600 hover:to-purple-700 transition-all shadow-lg"

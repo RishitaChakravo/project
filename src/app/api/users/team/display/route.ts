@@ -48,7 +48,7 @@ export async function GET(request: NextRequest) {
                             }
                         },
                         {
-                            $project: { description: 1, status: 1, _id: 0 }  // only description and status
+                            $project: { description: 1, status: 1, _id: 0 }  
                         }
                     ],
                     as: "tasks"
@@ -72,7 +72,7 @@ export async function GET(request: NextRequest) {
 
         return NextResponse.json({ teams: yourTeams }, { status: 200 });
 
-    } catch (error: any) {
-        return NextResponse.json({ message: "Error fetching teams", error: error.message }, { status: 500 });
+    } catch (error) {
+        return NextResponse.json({ message: "Error fetching teams", error: error}, { status: 500 });
     }
 }

@@ -13,7 +13,7 @@ export default function NavBar() {
       try {
         const response = await axios.get('/api/users/checkLoggedIn')
         setLoggedIn(response.data.loggedIn)
-      } catch (error: any) {
+      } catch (error) {
         setLoggedIn(false)
       } finally {
         setLoading(false)
@@ -26,8 +26,8 @@ export default function NavBar() {
   const handleLogout = async () => {
     try {
       await axios.post('/api/users/logout')
-    } catch (error:any) {
-      console.log(error.message)      
+    } catch (error) {
+      console.log(error)      
     }
   }
   return (

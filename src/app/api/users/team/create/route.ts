@@ -29,10 +29,10 @@ export async function POST(request: NextRequest) {
             team
         }, { status: 200 });
 
-    } catch (error: any) {
+    } catch (error) {
         return NextResponse.json({
             message: "Error creating team",
-            error: error.message
+            error: error
         }, { status: 500 });
     }
 }

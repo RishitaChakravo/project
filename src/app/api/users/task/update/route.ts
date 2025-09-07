@@ -61,7 +61,7 @@ export async function PATCH(request: NextRequest) {
 
         return NextResponse.json({ message: "Task updated successfully", task: updatedTask }, { status: 200 });
 
-    } catch (error: any) {
+    } catch (error) {
         console.error(error);
         return NextResponse.json({ error: "Server Error", message: "Something went wrong." }, { status: 500 });
     }

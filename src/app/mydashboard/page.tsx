@@ -32,8 +32,8 @@ export default function DashBoard() {
     const [loggedIn, setLoggedIn] = useState(true)
     const [loading, setLoading] = useState(true)
     const [selected, setSelected] = useState("Create")
-    const [tasks, setTasks] = useState<Task[]>()
-    const [teams, setTeams] = useState<TeamType[]>()
+    const [tasks, setTasks] = useState<Task[]>([])
+    const [teams, setTeams] = useState<TeamType[]>([])
     const [createTeam, setCreateTeam] = useState(false)
     const [teamname, setTeamName] = useState("")
     const [selectedMember, setSelectedMember] = useState<Member | null>(null)
@@ -48,7 +48,7 @@ export default function DashBoard() {
                 const response = await axios.get('/api/users/checkLoggedIn')
                 setLoggedIn(response.data.loggedIn)
                 setUser(response.data.user)
-            } catch (error: any) {
+            } catch (error) {
                 setLoggedIn(false)
             } finally {
                 setLoading(false)
@@ -65,7 +65,7 @@ export default function DashBoard() {
             await axios.post('/api/users/task/create', { ...task })
             displayTasks()
             setTask({ title: "", description: "", priority: "", duedate: "", status: "" })
-        } catch (error: any) {
+        } catch (error) {
             console.error("Error", error)
         }
     }
@@ -74,7 +74,7 @@ export default function DashBoard() {
         try {
             const response = await axios.get('/api/users/task/display')
             setTasks(response.data.tasks)
-        } catch (error: any) {
+        } catch (error) {
             console.error(error)
         }
     }
@@ -83,7 +83,7 @@ export default function DashBoard() {
         try {
             const response = await axios.get('/api/users/team/display')
             setTeams(response.data.teams)
-        } catch (error: any) {
+        } catch (error) {
             console.error(error)
         }
     }
@@ -151,7 +151,7 @@ export default function DashBoard() {
                                         try {
                                             await axios.post("/api/users/task/delete", { taskId: task._id })
                                             setTasks(prev => prev?.filter(t => t._id !== task._id))
-                                        } catch (error: any) { console.error(error) }
+                                        } catch (error) { console.error(error) }
                                     }}>Delete</button>
                             </div>
                         ))}
@@ -281,8 +281,8 @@ export default function DashBoard() {
                                         setEmail("");
                                         setInvite(false);
                                         displayTeams();
-                                    } catch (error: any) {
-                                        console.error("Invite failed:", error.response?.data || error.message);
+                                    } catch (error) {
+                                        console.error("Invite failed:", error);
                                     }
                                 }}
                             >

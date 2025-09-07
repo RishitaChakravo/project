@@ -9,7 +9,6 @@ export async function POST(request: NextRequest) {
         
         const { name, email, password, username } = await request.json()
 
-        // Validate fields
         if ([name, email, password, username].some((value) => value?.trim() === "")) {
             return NextResponse.json(
                 { error: "Error", message: "All fields are required" },
@@ -17,16 +16,15 @@ export async function POST(request: NextRequest) {
             )
         }
 
-        // Check for existing user
+
         const existingUser = await User.findOne({ $or: [{ email }, { username }] })
         if (existingUser) {
             return NextResponse.json({ error: "User already exists" }, { status: 400 })
         }
 
-        // Hash password
+
         const hashedPassword = await bcrypt.hash(password, 10)
 
-        // Create user
         const user = await User.create({
             name,
             email,
@@ -39,10 +37,10 @@ export async function POST(request: NextRequest) {
             { status: 200 }
         )
 
-    } catch (error: any) {
+    } catch (error) {
         console.error(error)
         return NextResponse.json(
-            { error: "Something went wrong", message: error.message },
+            { error: "Something went wrong"},
             { status: 500 }
         )
     }

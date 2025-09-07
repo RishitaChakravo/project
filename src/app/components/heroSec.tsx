@@ -13,7 +13,7 @@ export function TaskHero() {
             try {
                 const response = await axios.get('/api/users/checkLoggedIn')
                 setLoggedIn(response.data.loggedIn)
-            } catch (error: any) {
+            } catch (err) {
                 setLoggedIn(false)
             } finally {
                 setLoading(false)
@@ -61,34 +61,34 @@ export function TaskHero() {
                 </button>
             </motion.div>
 
-<motion.div
-  initial={{ opacity: 0 }}
-  animate={{ opacity: 1 }}
-  transition={{ delay: 1.6 }}
-  className="mt-8 flex justify-center"
->
-  <motion.button
-    whileHover={{ scale: 1.1 }}
-    whileTap={{ scale: 0.95 }}
-    animate={{
-      y: [0, -5, 0], // subtle floating effect
-      boxShadow: [
-        "0 5px 15px rgba(59, 130, 246, 0.3)",
-        "0 10px 20px rgba(59, 130, 246, 0.5)",
-        "0 5px 15px rgba(59, 130, 246, 0.3)",
-      ],
-    }}
-    transition={{
-      duration: 2,
-      repeat: Infinity,
-      repeatType: "loop",
-      ease: "easeInOut",
-    }}
-    className="px-10 py-4 font-bold text-white rounded-xl bg-gradient-to-r from-blue-500 via-indigo-500 to-purple-500 shadow-lg hover:from-blue-600 hover:via-indigo-600 hover:to-purple-600 focus:outline-none focus:ring-4 focus:ring-blue-400 focus:ring-offset-2"
-  >
-    Get Started
-  </motion.button>
-</motion.div>
+            <motion.div
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ delay: 1.6 }}
+                className="mt-8 flex justify-center"
+            >
+                <motion.button
+                    whileHover={{ scale: 1.1 }}
+                    whileTap={{ scale: 0.95 }}
+                    animate={{
+                        y: [0, -5, 0],
+                        boxShadow: [
+                            "0 5px 15px rgba(59, 130, 246, 0.3)",
+                            "0 10px 20px rgba(59, 130, 246, 0.5)",
+                            "0 5px 15px rgba(59, 130, 246, 0.3)",
+                        ],
+                    }}
+                    transition={{
+                        duration: 2,
+                        repeat: Infinity,
+                        repeatType: "loop",
+                        ease: "easeInOut",
+                    }}
+                    className="px-10 py-4 font-bold text-white rounded-xl bg-gradient-to-r from-blue-500 via-indigo-500 to-purple-500 shadow-lg hover:from-blue-600 hover:via-indigo-600 hover:to-purple-600 focus:outline-none focus:ring-4 focus:ring-blue-400 focus:ring-offset-2"
+                >
+                    Get Started
+                </motion.button>
+            </motion.div>
 
 
             <motion.div

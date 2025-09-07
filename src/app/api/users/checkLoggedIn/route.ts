@@ -26,9 +26,9 @@ export async function GET(request: NextRequest) {
       user,
     });
 
-  } catch (error: any) {
+  } catch (error: unknown) {
     return NextResponse.json(
-      { loggedIn: false, error: error.message },
+      { loggedIn: false},
       { status: 500 }
     );
   }
