@@ -41,21 +41,21 @@ export default function NavBar() {
       <div className="flex gap-4">
         {loggedIn && <Link
           href="/mydashboard"
-          className="px-4 py-2 rounded-xl border border-gray-500 text-gray-200 hover:bg-gray-700 hover:text-white transition"
+          className="px-2 py-1 sm:px-4 sm:py-2 rounded-xl border border-gray-500 text-gray-200 hover:bg-gray-700 hover:text-white transition"
         >
           My Dashboard
         </Link>}
         {loggedIn ? null : (
           <Link
             href="/auth/login"
-            className="px-4 py-2 rounded-xl border border-indigo-400 text-indigo-300 hover:bg-indigo-500 hover:text-white transition"
+            className="px-2 py-1 sm:px-4 sm:py-2 rounded-xl border border-indigo-400 text-indigo-300 hover:bg-indigo-500 hover:text-white transition"
           >
             Login
           </Link>
         )}
         <Link
           href="/auth/signup"
-          className="px-4 py-2 rounded-xl bg-indigo-500 text-white hover:bg-indigo-600 transition"
+          className="px-2 py-1 sm:px-4 sm:py-2 rounded-xl bg-indigo-500 text-white hover:bg-indigo-600 transition"
         >
           Sign Up
         </Link>
