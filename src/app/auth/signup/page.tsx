@@ -2,8 +2,10 @@
 
 import axios from "axios";
 import { useState } from "react";
+import {useRouter} from "next/navigation"
 
 export default function Signup() {
+  const router = useRouter()
   const [name, setName] = useState("");
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
@@ -19,6 +21,7 @@ export default function Signup() {
       });
 
       console.log("Signup success:", response.data);
+      router.push('/')
     } catch (error) {
       console.error("Signup failed:", error);
     }
