@@ -1,8 +1,11 @@
 import { NextRequest, NextResponse } from "next/server";
-import jwt from "jsonwebtoken";
-import { getDatafromToken } from "@/helpers/getDatafromToken";
+import jwt, { JwtPayload } from "jsonwebtoken";
 import User from "@/models/userModel";
 import { dbConnect } from "@/dbConfig/dbConnect";
+
+interface DecodedToken extends JwtPayload {
+  id: string;
+}
 
 export async function GET(request: NextRequest) {
   try {
@@ -13,7 +16,12 @@ export async function GET(request: NextRequest) {
       return NextResponse.json({ loggedIn: false }, { status: 401 });
     }
 
-    const decoded: any = jwt.verify(token, process.env.JWT_SECRET!);
+    let decoded: DecodedToken;
+    try {
+      decoded = jwt.verify(token, process.env.JWT_SECRET!) as DecodedToken;
+    } catch {
+      return NextResponse.json({ loggedIn: false }, { status: 401 });
+    }
 
     const user = await User.findById(decoded.id).select("-password");
 
@@ -27,10 +35,10 @@ export async function GET(request: NextRequest) {
     });
 
   } catch (error: unknown) {
-    return NextResponse.json(
-      { loggedIn: false},
-      { status: 500 }
-    );
+    if (error instanceof Error) {
+      console.error("GET /checkLoggedIn error:", error.message);
+    }
+    return NextResponse.json({ loggedIn: false }, { status: 500 });
   }
 }
 

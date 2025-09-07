@@ -6,7 +6,14 @@ import { dbConnect } from "@/dbConfig/dbConnect";
 export async function PATCH(request: NextRequest) {
     await dbConnect();
     try {
-        const reqBody = await request.json();
+        const reqBody = (await request.json()) as {
+            taskId: string;
+            title?: string;
+            description?: string;
+            priority?: string;
+            duedate?: string;
+            status?: string;
+        };
         const { taskId, title, description, priority, duedate, status } = reqBody;
 
         const token = request.cookies.get("token")?.value;
@@ -30,7 +37,7 @@ export async function PATCH(request: NextRequest) {
             );
         }
 
-        const updateData: any = {};
+        const updateData: Record<string, string> = {};
         if (title) updateData.title = title;
         if (description) updateData.description = description;
         if (priority) updateData.priority = priority;
@@ -61,7 +68,7 @@ export async function PATCH(request: NextRequest) {
 
         return NextResponse.json({ message: "Task updated successfully", task: updatedTask }, { status: 200 });
 
-    } catch (error) {
+    } catch (error: unknown) {
         console.error(error);
         return NextResponse.json({ error: "Server Error", message: "Something went wrong." }, { status: 500 });
     }
