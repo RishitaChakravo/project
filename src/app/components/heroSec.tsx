@@ -70,7 +70,8 @@ export function TaskHero() {
                 transition={{ delay: 1.6 }}
                 className="mt-8 flex justify-center"
             >
-                <motion.button
+                <Link href='/auth/signup'>
+                    <motion.button
                     whileHover={{ scale: 1.1 }}
                     whileTap={{ scale: 0.95 }}
                     animate={{
@@ -91,6 +92,7 @@ export function TaskHero() {
                 >
                     Get Started
                 </motion.button>
+                </Link>
             </motion.div>
 
 

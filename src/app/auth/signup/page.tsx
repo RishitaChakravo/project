@@ -25,14 +25,14 @@ export default function Signup() {
   };
 
   return (
-    <div className="flex justify-center items-center w-screen h-screen bg-gradient-to-b from-indigo-950 to-black">
+    <div className="flex flex-col space-y-2 justify-center items-center w-screen h-screen bg-gradient-to-b from-indigo-950 to-black">
       <div className="bg-white/10 backdrop-blur-md border border-white/20 w-[400px] p-10 rounded-2xl shadow-xl">
         <h2 className="text-3xl font-extrabold text-center text-indigo-300 mb-8 tracking-wide drop-shadow">
           Create Account
         </h2>
 
         <div className="flex flex-col gap-6">
-          
+
           <div className="flex flex-col">
             <label className="text-sm mb-1 text-gray-200">Name</label>
             <input
@@ -85,6 +85,15 @@ export default function Signup() {
           </button>
         </div>
       </div>
+      <p className="text-gray-400 text-sm">
+        Already have an account?{" "}
+        <a
+          href="/auth/login"
+          className="text-indigo-400 hover:text-indigo-300 hover:underline transition"
+        >
+          Log in
+        </a>
+      </p>
     </div>
   );
 }

@@ -21,7 +21,7 @@ export default function Login() {
     }
 
     return (
-        <div className="flex justify-center items-center w-screen h-screen bg-gradient-to-b from-indigo-950 to-black">
+        <div className="flex flex-col space-y-2 justify-center items-center w-screen h-screen bg-gradient-to-b from-indigo-950 to-black">
             <div className="bg-white/10 backdrop-blur-md border border-white/20 w-[400px] p-8 rounded-2xl shadow-lg">
                 <h2 className="text-3xl font-bold text-center text-indigo-300 mb-6 tracking-wide">
                     Login
@@ -57,6 +57,16 @@ export default function Login() {
                     </button>
                 </div>
             </div>
+            <p className="text-gray-400 text-sm">
+                Don&apos;t have an account?{" "}
+                <a
+                    href="/auth/signup"
+                    className="text-indigo-400 hover:text-indigo-300 hover:underline transition"
+                >
+                    Sign up
+                </a>
+            </p>
+
         </div>
     );
 }
