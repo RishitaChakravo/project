@@ -21,7 +21,7 @@ export default function Signup() {
       });
 
       console.log("Signup success:", response.data);
-      router.push('/')
+      router.push('/auth/login')
     } catch (error) {
       console.error("Signup failed:", error);
     }

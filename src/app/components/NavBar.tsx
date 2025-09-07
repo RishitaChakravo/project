@@ -45,12 +45,7 @@ export default function NavBar() {
         >
           My Dashboard
         </Link>}
-        {loggedIn ? (<button
-            onClick={handleLogout}
-            className="px-4 py-2 rounded-xl border border-indigo-400 text-indigo-300 hover:bg-indigo-500 hover:text-white transition"
-          >
-            Logout
-          </button>) : (
+        {loggedIn ? null : (
           <Link
             href="/auth/login"
             className="px-4 py-2 rounded-xl border border-indigo-400 text-indigo-300 hover:bg-indigo-500 hover:text-white transition"
