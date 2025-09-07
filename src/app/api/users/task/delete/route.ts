@@ -1,7 +1,8 @@
 import { dbConnect } from "@/dbConfig/dbConnect";
 import Task from "@/models/taskSchema";
 import { NextRequest, NextResponse } from "next/server";
-import jwt from "jsonwebtoken";
+import jwt, { JwtPayload } from "jsonwebtoken";
+
 
 export async function POST(request: NextRequest) {
     try {
@@ -15,10 +16,11 @@ export async function POST(request: NextRequest) {
             return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
         }
 
-        let user: any;
+        let user: string | JwtPayload;        
         try {
             user = jwt.verify(token, process.env.JWT_SECRET!);
-        } catch (err) {
+        } catch (error) {
+            console.log(error)
             return NextResponse.json(
                 { error: "Invalid token" }, 
                 { status: 401 });
@@ -29,8 +31,9 @@ export async function POST(request: NextRequest) {
                 { error: "Task ID is required" }, 
                 { status: 400 });
         }
+        const userId = typeof user === "string" ? user : user._id;
 
-        const taskTodel = await Task.findOneAndDelete({ _id: taskId, userId: user.id });
+        const taskTodel = await Task.findOneAndDelete({ _id: taskId, userId});
 
         if (!taskTodel) {
             return NextResponse.json(
