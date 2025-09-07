@@ -10,9 +10,13 @@
   },
   "dependencies": {
     "@tabler/icons-react": "^3.34.1",
+    "@types/jsonwebtoken": "^9.0.10",
     "axios": "^1.11.0",
+    "bcryptjs": "^3.0.2",
     "clsx": "^2.1.1",
     "cobe": "^0.6.4",
+    "jsonwebtoken": "^9.0.2",
+    "mongoose": "^8.18.0",
     "motion": "^12.23.12",
     "next": "15.5.2",
     "react": "19.1.0",
